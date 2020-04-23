@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="authentication_route_tests.AccountRouteTest-20200420141837" tests="7" file="authentication_route_tests.py" time="0.060" timestamp="2020-04-20T14:18:37" failures="1" errors="2" skipped="0">
+	<testcase classname="authentication_route_tests.AccountRouteTest" name="test_authenticate_user_invalid_credentials_data" time="0.008" timestamp="2020-04-20T14:18:37" file="src\unittest\python\authentication_route_tests.py" line="32">
+		<system-out><![CDATA[]]></system-out>
+		<system-err><![CDATA[]]></system-err>
+	</testcase>
+	<testcase classname="authentication_route_tests.AccountRouteTest" name="test_authenticate_user_with_credentials_not_found" time="0.002" timestamp="2020-04-20T14:18:37" file="src\unittest\python\authentication_route_tests.py" line="42">
+		<system-out><![CDATA[]]></system-out>
+		<system-err><![CDATA[]]></system-err>
+	</testcase>
+	<testcase classname="authentication_route_tests.AccountRouteTest" name="test_authenticate_user_with_missing_fields" time="0.002" timestamp="2020-04-20T14:18:37" file="src\unittest\python\authentication_route_tests.py" line="25">
+		<system-out><![CDATA[]]></system-out>
+		<system-err><![CDATA[]]></system-err>
+	</testcase>
+	<testcase classname="authentication_route_tests.AccountRouteTest" name="test_token_protected_with_no_authorization_headers" time="0.002" timestamp="2020-04-20T14:18:37" file="src\unittest\python\authentication_route_tests.py" line="62">
+		<system-out><![CDATA[]]></system-out>
+		<system-err><![CDATA[]]></system-err>
+	</testcase>
+	<testcase classname="authentication_route_tests.AccountRouteTest" name="test_authenticate_user_with_credentials_found" time="0.040" timestamp="2020-04-20T14:18:37" file="src\unittest\python\authentication_route_tests.py" line="52">
+		<failure type="AssertionError" message="'successfuly authenticated' not found in '&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 3.2 Final//EN&quot;&gt;\n&lt;title&gt;500 Internal Server Error&lt;/title&gt;\n&lt;h1&gt;Internal Server Error&lt;/h1&gt;\n&lt;p&gt;The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.&lt;/p&gt;\n'"><![CDATA[Traceback (most recent call last):
+  File "c:\python38\lib\unittest\mock.py", line 1348, in patched
+    return func(*newargs, **newkeywargs)
+  File "c:\users\michael\desktop\soft_eng\project\ecommerce_site\backend\src\unittest\python\authentication_route_tests.py", line 59, in test_authenticate_user_with_credentials_found
+    self.assertIn("successfuly authenticated", result)
+AssertionError: 'successfuly authenticated' not found in '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">\n<title>500 Internal Server Error</title>\n<h1>Internal Server Error</h1>\n<p>The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.</p>\n'
+]]></failure>
+		<system-out><![CDATA[]]></system-out>
+		<system-err><![CDATA[[2020-04-20 14:18:37,183] ERROR in app: Exception on /api/auth [POST]
+Traceback (most recent call last):
+  File "C:\Users\Michael\Desktop\soft_eng\project\ecommerce_site\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\Michael\Desktop\soft_eng\project\ecommerce_site\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\Michael\Desktop\soft_eng\project\ecommerce_site\venv\lib\site-packages\flask_cors\extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "C:\Users\Michael\Desktop\soft_eng\project\ecommerce_site\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\Michael\Desktop\soft_eng\project\ecommerce_site\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\Michael\Desktop\soft_eng\project\ecommerce_site\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\Michael\Desktop\soft_eng\project\ecommerce_site\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "src\main\python\app.py", line 122, in authenticate_user
+    token = jwt.encode(
+AttributeError: module 'jwt' has no attribute 'encode'
+]]></system-err>
+	</testcase>
+	<testcase classname="authentication_route_tests.AccountRouteTest" name="test_token_protected_with_invalid_token" time="0.005" timestamp="2020-04-20T14:18:37" file="src\unittest\python\authentication_route_tests.py" line="68">
+		<error type="AttributeError" message="&lt;module 'jwt' from 'C:\\Users\\Michael\\Desktop\\soft_eng\\project\\ecommerce_site\\venv\\lib\\site-packages\\jwt\\__init__.py'&gt; does not have the attribute 'decode'"><![CDATA[Traceback (most recent call last):
+  File "c:\python38\lib\unittest\mock.py", line 1345, in patched
+    with self.decoration_helper(patched,
+  File "c:\python38\lib\contextlib.py", line 113, in __enter__
+    return next(self.gen)
+  File "c:\python38\lib\unittest\mock.py", line 1313, in decoration_helper
+    arg = patching.__enter__()
+  File "c:\python38\lib\unittest\mock.py", line 1416, in __enter__
+    original, local = self.get_original()
+  File "c:\python38\lib\unittest\mock.py", line 1389, in get_original
+    raise AttributeError(
+AttributeError: <module 'jwt' from 'C:\\Users\\Michael\\Desktop\\soft_eng\\project\\ecommerce_site\\venv\\lib\\site-packages\\jwt\\__init__.py'> does not have the attribute 'decode'
+]]></error>
+		<system-out><![CDATA[]]></system-out>
+		<system-err><![CDATA[]]></system-err>
+	</testcase>
+	<testcase classname="authentication_route_tests.AccountRouteTest" name="test_token_protected_with_valid_token" time="0.001" timestamp="2020-04-20T14:18:37" file="src\unittest\python\authentication_route_tests.py" line="78">
+		<error type="AttributeError" message="&lt;module 'jwt' from 'C:\\Users\\Michael\\Desktop\\soft_eng\\project\\ecommerce_site\\venv\\lib\\site-packages\\jwt\\__init__.py'&gt; does not have the attribute 'decode'"><![CDATA[Traceback (most recent call last):
+  File "c:\python38\lib\unittest\mock.py", line 1345, in patched
+    with self.decoration_helper(patched,
+  File "c:\python38\lib\contextlib.py", line 113, in __enter__
+    return next(self.gen)
+  File "c:\python38\lib\unittest\mock.py", line 1313, in decoration_helper
+    arg = patching.__enter__()
+  File "c:\python38\lib\unittest\mock.py", line 1416, in __enter__
+    original, local = self.get_original()
+  File "c:\python38\lib\unittest\mock.py", line 1389, in get_original
+    raise AttributeError(
+AttributeError: <module 'jwt' from 'C:\\Users\\Michael\\Desktop\\soft_eng\\project\\ecommerce_site\\venv\\lib\\site-packages\\jwt\\__init__.py'> does not have the attribute 'decode'
+]]></error>
+		<system-out><![CDATA[]]></system-out>
+		<system-err><![CDATA[]]></system-err>
+	</testcase>
+</testsuite>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite errors="0" failures="0" file="order_route_tests.py" name="order_route_tests.OrderRouteTest-20200412173944" skipped="0" tests="2" time="0.006" timestamp="2020-04-12T17:39:44">
+	<testcase classname="order_route_tests.OrderRouteTest" file="src\unittest\python\order_route_tests.py" line="28" name="test_send_order_with_invalid_order" time="0.003" timestamp="2020-04-12T17:39:44">
+		<system-out>
+<![CDATA[]]>		</system-out>
+		<system-err>
+<![CDATA[]]>		</system-err>
+	</testcase>
+	<testcase classname="order_route_tests.OrderRouteTest" file="src\unittest\python\order_route_tests.py" line="42" name="test_send_order_with_valid_order" time="0.003" timestamp="2020-04-12T17:39:44">
+		<system-out>
+<![CDATA[]]>		</system-out>
+		<system-err>
+<![CDATA[]]>		</system-err>
+	</testcase>
+</testsuite>

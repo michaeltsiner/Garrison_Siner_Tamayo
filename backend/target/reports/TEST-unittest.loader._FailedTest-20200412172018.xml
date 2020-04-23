@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite errors="2" failures="0" file="unittest/loader.py" name="unittest.loader._FailedTest-20200412172018" skipped="0" tests="2" time="0.002" timestamp="2020-04-12T17:20:18">
+	<testcase classname="unittest.loader._FailedTest" file="..\..\..\..\..\appdata\local\programs\python\python36\lib\unittest\loader.py" line="33" name="cart_route_tests" time="0.001" timestamp="2020-04-12T17:20:18">
+		<error message="Failed to import test module: cart_route_tests
+Traceback (most recent call last):
+  File &quot;c:\users\michael\appdata\local\programs\python\python36\lib\unittest\loader.py&quot;, line 153, in loadTestsFromName
+    module = __import__(module_name)
+  File &quot;c:\users\michael\desktop\soft_eng\project\ecommerce_site\backend\src\unittest\python\cart_route_tests.py&quot;, line 3, in &lt;module&gt;
+    import jwt
+ModuleNotFoundError: No module named 'jwt'
+" type="ImportError">
+<![CDATA[ImportError: Failed to import test module: cart_route_tests
+Traceback (most recent call last):
+  File "c:\users\michael\appdata\local\programs\python\python36\lib\unittest\loader.py", line 153, in loadTestsFromName
+    module = __import__(module_name)
+  File "c:\users\michael\desktop\soft_eng\project\ecommerce_site\backend\src\unittest\python\cart_route_tests.py", line 3, in <module>
+    import jwt
+ModuleNotFoundError: No module named 'jwt'
+
+]]>		</error>
+		<system-out>
+<![CDATA[]]>		</system-out>
+		<system-err>
+<![CDATA[]]>		</system-err>
+	</testcase>
+	<testcase classname="unittest.loader._FailedTest" file="..\..\..\..\..\appdata\local\programs\python\python36\lib\unittest\loader.py" line="33" name="order_route_tests" time="0.001" timestamp="2020-04-12T17:20:18">
+		<error message="Failed to import test module: order_route_tests
+Traceback (most recent call last):
+  File &quot;c:\users\michael\appdata\local\programs\python\python36\lib\unittest\loader.py&quot;, line 153, in loadTestsFromName
+    module = __import__(module_name)
+  File &quot;c:\users\michael\desktop\soft_eng\project\ecommerce_site\backend\src\unittest\python\order_route_tests.py&quot;, line 3, in &lt;module&gt;
+    import jwt
+ModuleNotFoundError: No module named 'jwt'
+" type="ImportError">
+<![CDATA[ImportError: Failed to import test module: order_route_tests
+Traceback (most recent call last):
+  File "c:\users\michael\appdata\local\programs\python\python36\lib\unittest\loader.py", line 153, in loadTestsFromName
+    module = __import__(module_name)
+  File "c:\users\michael\desktop\soft_eng\project\ecommerce_site\backend\src\unittest\python\order_route_tests.py", line 3, in <module>
+    import jwt
+ModuleNotFoundError: No module named 'jwt'
+
+]]>		</error>
+		<system-out>
+<![CDATA[]]>		</system-out>
+		<system-err>
+<![CDATA[]]>		</system-err>
+	</testcase>
+</testsuite>

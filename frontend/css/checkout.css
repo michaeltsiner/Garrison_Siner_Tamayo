@@ -1,0 +1,33 @@
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+nav > div {
+  min-height: 30px;
+  padding: 1rem 2rem;
+}
+
+nav {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  justify-items: start;
+  border-bottom: 2px solid #CFCFCF;
+}
+
+input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form {
+  width: 90%;
+  padding: 1em;
+  margin: auto;
+  background-color: #f2f2f2;
+  border-radius: 1em;
+}

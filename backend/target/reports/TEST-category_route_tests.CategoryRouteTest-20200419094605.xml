@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="category_route_tests.CategoryRouteTest-20200419094605" tests="2" file="category_route_tests.py" time="0.003" timestamp="2020-04-19T09:46:05" failures="0" errors="0" skipped="0">
+	<testcase classname="category_route_tests.CategoryRouteTest" name="test_get_categories_with_none_in_database" time="0.002" timestamp="2020-04-19T09:46:05" file="src\unittest\python\category_route_tests.py" line="22">
+		<system-out><![CDATA[]]></system-out>
+		<system-err><![CDATA[]]></system-err>
+	</testcase>
+	<testcase classname="category_route_tests.CategoryRouteTest" name="test_get_products_with_one_in_database" time="0.001" timestamp="2020-04-19T09:46:05" file="src\unittest\python\category_route_tests.py" line="30">
+		<system-out><![CDATA[]]></system-out>
+		<system-err><![CDATA[]]></system-err>
+	</testcase>
+</testsuite>

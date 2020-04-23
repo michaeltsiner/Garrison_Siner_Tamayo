@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<script type="text/javascript" src="js/angular.min.js"></script>
+		<script type="text/javascript" src="js/angular-cookies.min.js"></script>
+		<script type="text/javascript" src="js/cart.js"></script>
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/cart.css">
+		<title>Cart</title>
+		<base href="/" />
+	</head>
+	<body ng-app="cart" ng-controller="cartController" ng-init="initialize()">
+
+		<nav>
+			<div class="logo">
+				<a href="/">E-Commerce Site</a>
+			</div>
+			<div class="account">	
+				<a ng-href="{{account.link}}" ng-bind="account.message"></a>
+				<a ng-click="signOut()" ng-show="user">Sign out</a>
+			</div>
+			<div class="cart">
+				<span><a href="cart.html">Cart</a>: {{numberOfCartItems()}}</span>
+			</div>
+		</nav>
+
+		<section class="cartItems">
+			<h1>Cart Items</h1>
+			<div class="cartItems-container">
+				<div class="cartItem" ng-repeat="cartItem in cart.orderDetails">
+					<h5 ng-bind="cartItem.name"></h5>
+					<h5>Price: {{cartItem.price / 100 | currency}}</h5>
+					<h5>Quantity: {{cartItem.quantity}}</h5>
+					<button ng-click="reduceQuantity(cartItem.productID)">-</button>
+					<button ng-click="addQuantity(cartItem.productID)">+</button>
+				</div>
+			</div>
+			<h2 >Tax: {{cartTax() / 100 | currency}}</h2>
+			<h2 >Total: {{total() / 100 | currency}}</h2>
+			<div>
+				<button id="checkout-btn" ng-click="goToCheckout()">Checkout</button>
+			</div>
+		</section>
+
+	</body>
+</html>

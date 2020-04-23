@@ -1,0 +1,92 @@
+
+Running tests...
+----------------------------------------------------------------------
+......F..E.EEEE.....................EEE..
+======================================================================
+ERROR [0.001s]: test_token_protected_with_invalid_token (authentication_route_tests.AccountRouteTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Python368\lib\unittest\mock.py", line 1175, in patched
+    arg = patching.__enter__()
+  File "C:\Python368\lib\unittest\mock.py", line 1247, in __enter__
+    original, local = self.get_original()
+  File "C:\Python368\lib\unittest\mock.py", line 1221, in get_original
+    "%s does not have the attribute %r" % (target, name)
+AttributeError: <module 'jwt' from 'C:\\Python368\\lib\\site-packages\\jwt\\__init__.py'> does not have the attribute 'decode'
+
+======================================================================
+ERROR [0.001s]: test_token_protected_with_valid_token (authentication_route_tests.AccountRouteTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Python368\lib\unittest\mock.py", line 1175, in patched
+    arg = patching.__enter__()
+  File "C:\Python368\lib\unittest\mock.py", line 1247, in __enter__
+    original, local = self.get_original()
+  File "C:\Python368\lib\unittest\mock.py", line 1221, in get_original
+    "%s does not have the attribute %r" % (target, name)
+AttributeError: <module 'jwt' from 'C:\\Python368\\lib\\site-packages\\jwt\\__init__.py'> does not have the attribute 'decode'
+
+======================================================================
+ERROR [0.001s]: test_get_cart_with_empty_user_cart (cart_route_tests.CartRouteTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\users\michael\desktop\soft_eng\project\ecommerce_site\backend\src\unittest\python\cart_route_tests.py", line 17, in setUp
+    self.token = jwt.encode(
+AttributeError: module 'jwt' has no attribute 'encode'
+
+======================================================================
+ERROR [0.000s]: test_update_cart_with_invalid_cart (cart_route_tests.CartRouteTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\users\michael\desktop\soft_eng\project\ecommerce_site\backend\src\unittest\python\cart_route_tests.py", line 17, in setUp
+    self.token = jwt.encode(
+AttributeError: module 'jwt' has no attribute 'encode'
+
+======================================================================
+ERROR [0.001s]: test_update_cart_with_valid_cart (cart_route_tests.CartRouteTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\users\michael\desktop\soft_eng\project\ecommerce_site\backend\src\unittest\python\cart_route_tests.py", line 17, in setUp
+    self.token = jwt.encode(
+AttributeError: module 'jwt' has no attribute 'encode'
+
+======================================================================
+ERROR [0.001s]: test_send_order_with_invalid_address (order_route_tests.OrderRouteTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\users\michael\desktop\soft_eng\project\ecommerce_site\backend\src\unittest\python\order_route_tests.py", line 16, in setUp
+    self.token = jwt.encode(
+AttributeError: module 'jwt' has no attribute 'encode'
+
+======================================================================
+ERROR [0.001s]: test_send_order_with_invalid_order (order_route_tests.OrderRouteTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\users\michael\desktop\soft_eng\project\ecommerce_site\backend\src\unittest\python\order_route_tests.py", line 16, in setUp
+    self.token = jwt.encode(
+AttributeError: module 'jwt' has no attribute 'encode'
+
+======================================================================
+ERROR [0.000s]: test_send_order_with_valid_order (order_route_tests.OrderRouteTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\users\michael\desktop\soft_eng\project\ecommerce_site\backend\src\unittest\python\order_route_tests.py", line 16, in setUp
+    self.token = jwt.encode(
+AttributeError: module 'jwt' has no attribute 'encode'
+
+======================================================================
+FAIL [0.012s]: test_authenticate_user_with_credentials_found (authentication_route_tests.AccountRouteTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Python368\lib\unittest\mock.py", line 1183, in patched
+    return func(*args, **keywargs)
+  File "c:\users\michael\desktop\soft_eng\project\ecommerce_site\backend\src\unittest\python\authentication_route_tests.py", line 59, in test_authenticate_user_with_credentials_found
+    self.assertIn("successfuly authenticated", result)
+AssertionError: 'successfuly authenticated' not found in '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">\n<title>500 Internal Server Error</title>\n<h1>Internal Server Error</h1>\n<p>The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.</p>\n'
+
+----------------------------------------------------------------------
+Ran 41 tests in 1.372s
+
+FAILED (failures=1, errors=8)
+
+Generating XML reports...

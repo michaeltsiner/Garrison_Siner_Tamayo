@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="data_validator_tests.DataValidatorTest-20200419094605" tests="6" file="data_validator_tests.py" time="0.004" timestamp="2020-04-19T09:46:07" failures="0" errors="0" skipped="0">
+	<testcase classname="data_validator_tests.DataValidatorTest" name="test_valid_account_data_with_schema_matched" time="0.002" timestamp="2020-04-19T09:46:07" file="src\unittest\python\data_validator_tests.py" line="12">
+		<system-out><![CDATA[]]></system-out>
+		<system-err><![CDATA[]]></system-err>
+	</testcase>
+	<testcase classname="data_validator_tests.DataValidatorTest" name="test_valid_account_data_with_schema_unmatched" time="0.000" timestamp="2020-04-19T09:46:07" file="src\unittest\python\data_validator_tests.py" line="6">
+		<system-out><![CDATA[]]></system-out>
+		<system-err><![CDATA[]]></system-err>
+	</testcase>
+	<testcase classname="data_validator_tests.DataValidatorTest" name="test_valid_credentials_data_with_schema_matched" time="0.001" timestamp="2020-04-19T09:46:07" file="src\unittest\python\data_validator_tests.py" line="32">
+		<system-out><![CDATA[]]></system-out>
+		<system-err><![CDATA[]]></system-err>
+	</testcase>
+	<testcase classname="data_validator_tests.DataValidatorTest" name="test_valid_credentials_data_with_schema_unmatched" time="0.000" timestamp="2020-04-19T09:46:07" file="src\unittest\python\data_validator_tests.py" line="26">
+		<system-out><![CDATA[]]></system-out>
+		<system-err><![CDATA[]]></system-err>
+	</testcase>
+	<testcase classname="data_validator_tests.DataValidatorTest" name="test_valid_order_data_with_schema_matched" time="0.000" timestamp="2020-04-19T09:46:07" file="src\unittest\python\data_validator_tests.py" line="53">
+		<system-out><![CDATA[]]></system-out>
+		<system-err><![CDATA[]]></system-err>
+	</testcase>
+	<testcase classname="data_validator_tests.DataValidatorTest" name="test_valid_order_data_with_schema_unmatched" time="0.001" timestamp="2020-04-19T09:46:07" file="src\unittest\python\data_validator_tests.py" line="41">
+		<system-out><![CDATA[]]></system-out>
+		<system-err><![CDATA[]]></system-err>
+	</testcase>
+</testsuite>

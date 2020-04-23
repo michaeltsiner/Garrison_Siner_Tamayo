@@ -1,0 +1,21 @@
+.form {
+	width: 90%;
+	padding: 1em;
+	margin: auto;
+	background-color: #f2f2f2;
+	border-radius: 1em;
+}
+
+body {
+	background-color: lightgray;
+}
+
+input {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite errors="0" failures="2" file="order_route_tests.py" name="order_route_tests.OrderRouteTest-20200412173832" skipped="0" tests="2" time="0.003" timestamp="2020-04-12T17:38:32">
+	<testcase classname="order_route_tests.OrderRouteTest" file="src\unittest\python\order_route_tests.py" line="28" name="test_send_order_with_invalid_order" time="0.002" timestamp="2020-04-12T17:38:32">
+		<failure message="'{&quot;msg&quot;:&quot;invalid token&quot;}\n' != '{&quot;msg&quot;:&quot;no/invalid json data or missing json content type header&quot;}\n'
+- {&quot;msg&quot;:&quot;invalid token&quot;}
++ {&quot;msg&quot;:&quot;no/invalid json data or missing json content type header&quot;}
+" type="AssertionError">
+<![CDATA[Traceback (most recent call last):
+  File "C:\Users\Michael\AppData\Local\Programs\Python\Python36\lib\unittest\mock.py", line 1183, in patched
+    return func(*args, **keywargs)
+  File "c:\users\michael\desktop\soft_eng\project\ecommerce_site\backend\src\unittest\python\order_route_tests.py", line 39, in test_send_order_with_invalid_order
+    self.assertEqual(result, expected)
+AssertionError: '{"msg":"invalid token"}\n' != '{"msg":"no/invalid json data or missing json content type header"}\n'
+- {"msg":"invalid token"}
++ {"msg":"no/invalid json data or missing json content type header"}
+
+]]>		</failure>
+		<system-out>
+<![CDATA[name 'jwt' is not defined
+]]>		</system-out>
+		<system-err>
+<![CDATA[]]>		</system-err>
+	</testcase>
+	<testcase classname="order_route_tests.OrderRouteTest" file="src\unittest\python\order_route_tests.py" line="42" name="test_send_order_with_valid_order" time="0.001" timestamp="2020-04-12T17:38:32">
+		<failure message="'{&quot;msg&quot;:&quot;invalid token&quot;}\n' != '{&quot;msg&quot;:&quot;successfuly created order&quot;}\n'
+- {&quot;msg&quot;:&quot;invalid token&quot;}
++ {&quot;msg&quot;:&quot;successfuly created order&quot;}
+" type="AssertionError">
+<![CDATA[Traceback (most recent call last):
+  File "C:\Users\Michael\AppData\Local\Programs\Python\Python36\lib\unittest\mock.py", line 1183, in patched
+    return func(*args, **keywargs)
+  File "c:\users\michael\desktop\soft_eng\project\ecommerce_site\backend\src\unittest\python\order_route_tests.py", line 52, in test_send_order_with_valid_order
+    self.assertEqual(result, expected)
+AssertionError: '{"msg":"invalid token"}\n' != '{"msg":"successfuly created order"}\n'
+- {"msg":"invalid token"}
++ {"msg":"successfuly created order"}
+
+]]>		</failure>
+		<system-out>
+<![CDATA[name 'jwt' is not defined
+]]>		</system-out>
+		<system-err>
+<![CDATA[]]>		</system-err>
+	</testcase>
+</testsuite>

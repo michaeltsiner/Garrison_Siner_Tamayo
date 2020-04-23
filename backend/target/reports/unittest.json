@@ -1,0 +1,43 @@
+{
+  "errors": [
+    {
+      "test": "authentication_route_tests.AccountRouteTest.test_token_protected_with_invalid_token",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\Python368\\lib\\unittest\\mock.py\", line 1175, in patched\n    arg = patching.__enter__()\n  File \"C:\\Python368\\lib\\unittest\\mock.py\", line 1247, in __enter__\n    original, local = self.get_original()\n  File \"C:\\Python368\\lib\\unittest\\mock.py\", line 1221, in get_original\n    \"%s does not have the attribute %r\" % (target, name)\nAttributeError: <module 'jwt' from 'C:\\\\Python368\\\\lib\\\\site-packages\\\\jwt\\\\__init__.py'> does not have the attribute 'decode'\n"
+    },
+    {
+      "test": "authentication_route_tests.AccountRouteTest.test_token_protected_with_valid_token",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\Python368\\lib\\unittest\\mock.py\", line 1175, in patched\n    arg = patching.__enter__()\n  File \"C:\\Python368\\lib\\unittest\\mock.py\", line 1247, in __enter__\n    original, local = self.get_original()\n  File \"C:\\Python368\\lib\\unittest\\mock.py\", line 1221, in get_original\n    \"%s does not have the attribute %r\" % (target, name)\nAttributeError: <module 'jwt' from 'C:\\\\Python368\\\\lib\\\\site-packages\\\\jwt\\\\__init__.py'> does not have the attribute 'decode'\n"
+    },
+    {
+      "test": "cart_route_tests.CartRouteTest.test_get_cart_with_empty_user_cart",
+      "traceback": "Traceback (most recent call last):\n  File \"c:\\users\\michael\\desktop\\soft_eng\\project\\ecommerce_site\\backend\\src\\unittest\\python\\cart_route_tests.py\", line 17, in setUp\n    self.token = jwt.encode(\nAttributeError: module 'jwt' has no attribute 'encode'\n"
+    },
+    {
+      "test": "cart_route_tests.CartRouteTest.test_update_cart_with_invalid_cart",
+      "traceback": "Traceback (most recent call last):\n  File \"c:\\users\\michael\\desktop\\soft_eng\\project\\ecommerce_site\\backend\\src\\unittest\\python\\cart_route_tests.py\", line 17, in setUp\n    self.token = jwt.encode(\nAttributeError: module 'jwt' has no attribute 'encode'\n"
+    },
+    {
+      "test": "cart_route_tests.CartRouteTest.test_update_cart_with_valid_cart",
+      "traceback": "Traceback (most recent call last):\n  File \"c:\\users\\michael\\desktop\\soft_eng\\project\\ecommerce_site\\backend\\src\\unittest\\python\\cart_route_tests.py\", line 17, in setUp\n    self.token = jwt.encode(\nAttributeError: module 'jwt' has no attribute 'encode'\n"
+    },
+    {
+      "test": "order_route_tests.OrderRouteTest.test_send_order_with_invalid_address",
+      "traceback": "Traceback (most recent call last):\n  File \"c:\\users\\michael\\desktop\\soft_eng\\project\\ecommerce_site\\backend\\src\\unittest\\python\\order_route_tests.py\", line 16, in setUp\n    self.token = jwt.encode(\nAttributeError: module 'jwt' has no attribute 'encode'\n"
+    },
+    {
+      "test": "order_route_tests.OrderRouteTest.test_send_order_with_invalid_order",
+      "traceback": "Traceback (most recent call last):\n  File \"c:\\users\\michael\\desktop\\soft_eng\\project\\ecommerce_site\\backend\\src\\unittest\\python\\order_route_tests.py\", line 16, in setUp\n    self.token = jwt.encode(\nAttributeError: module 'jwt' has no attribute 'encode'\n"
+    },
+    {
+      "test": "order_route_tests.OrderRouteTest.test_send_order_with_valid_order",
+      "traceback": "Traceback (most recent call last):\n  File \"c:\\users\\michael\\desktop\\soft_eng\\project\\ecommerce_site\\backend\\src\\unittest\\python\\order_route_tests.py\", line 16, in setUp\n    self.token = jwt.encode(\nAttributeError: module 'jwt' has no attribute 'encode'\n"
+    }
+  ],
+  "failures": [
+    {
+      "test": "authentication_route_tests.AccountRouteTest.test_authenticate_user_with_credentials_found",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\Python368\\lib\\unittest\\mock.py\", line 1183, in patched\n    return func(*args, **keywargs)\n  File \"c:\\users\\michael\\desktop\\soft_eng\\project\\ecommerce_site\\backend\\src\\unittest\\python\\authentication_route_tests.py\", line 59, in test_authenticate_user_with_credentials_found\n    self.assertIn(\"successfuly authenticated\", result)\nAssertionError: 'successfuly authenticated' not found in '<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\\n<title>500 Internal Server Error</title>\\n<h1>Internal Server Error</h1>\\n<p>The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.</p>\\n'\n"
+    }
+  ],
+  "tests-run": 41
+}

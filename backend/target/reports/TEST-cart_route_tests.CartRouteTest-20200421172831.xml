@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite errors="3" failures="0" file="cart_route_tests.py" name="cart_route_tests.CartRouteTest-20200421172831" skipped="0" tests="3" time="0.002" timestamp="2020-04-21T17:28:31">
+	<testcase classname="cart_route_tests.CartRouteTest" file="src\unittest\python\cart_route_tests.py" line="55" name="test_get_cart_with_empty_user_cart" time="0.001" timestamp="2020-04-21T17:28:31">
+		<error message="module 'jwt' has no attribute 'encode'" type="AttributeError">
+<![CDATA[Traceback (most recent call last):
+  File "c:\users\michael\desktop\soft_eng\project\ecommerce_site\backend\src\unittest\python\cart_route_tests.py", line 17, in setUp
+    self.token = jwt.encode(
+AttributeError: module 'jwt' has no attribute 'encode'
+]]>		</error>
+		<system-out>
+<![CDATA[]]>		</system-out>
+		<system-err>
+<![CDATA[]]>		</system-err>
+	</testcase>
+	<testcase classname="cart_route_tests.CartRouteTest" file="src\unittest\python\cart_route_tests.py" line="29" name="test_update_cart_with_invalid_cart" time="0.000" timestamp="2020-04-21T17:28:31">
+		<error message="module 'jwt' has no attribute 'encode'" type="AttributeError">
+<![CDATA[Traceback (most recent call last):
+  File "c:\users\michael\desktop\soft_eng\project\ecommerce_site\backend\src\unittest\python\cart_route_tests.py", line 17, in setUp
+    self.token = jwt.encode(
+AttributeError: module 'jwt' has no attribute 'encode'
+]]>		</error>
+		<system-out>
+<![CDATA[]]>		</system-out>
+		<system-err>
+<![CDATA[]]>		</system-err>
+	</testcase>
+	<testcase classname="cart_route_tests.CartRouteTest" file="src\unittest\python\cart_route_tests.py" line="43" name="test_update_cart_with_valid_cart" time="0.001" timestamp="2020-04-21T17:28:31">
+		<error message="module 'jwt' has no attribute 'encode'" type="AttributeError">
+<![CDATA[Traceback (most recent call last):
+  File "c:\users\michael\desktop\soft_eng\project\ecommerce_site\backend\src\unittest\python\cart_route_tests.py", line 17, in setUp
+    self.token = jwt.encode(
+AttributeError: module 'jwt' has no attribute 'encode'
+]]>		</error>
+		<system-out>
+<![CDATA[]]>		</system-out>
+		<system-err>
+<![CDATA[]]>		</system-err>
+	</testcase>
+</testsuite>

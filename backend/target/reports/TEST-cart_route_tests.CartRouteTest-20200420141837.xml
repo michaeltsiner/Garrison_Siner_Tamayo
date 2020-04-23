@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cart_route_tests.CartRouteTest-20200420141837" tests="3" file="cart_route_tests.py" time="0.005" timestamp="2020-04-20T14:18:37" failures="0" errors="3" skipped="0">
+	<testcase classname="cart_route_tests.CartRouteTest" name="test_get_cart_with_empty_user_cart" time="0.005" timestamp="2020-04-20T14:18:37" file="src\unittest\python\cart_route_tests.py" line="55">
+		<error type="AttributeError" message="module 'jwt' has no attribute 'encode'"><![CDATA[Traceback (most recent call last):
+  File "c:\users\michael\desktop\soft_eng\project\ecommerce_site\backend\src\unittest\python\cart_route_tests.py", line 17, in setUp
+    self.token = jwt.encode(
+AttributeError: module 'jwt' has no attribute 'encode'
+]]></error>
+		<system-out><![CDATA[]]></system-out>
+		<system-err><![CDATA[]]></system-err>
+	</testcase>
+	<testcase classname="cart_route_tests.CartRouteTest" name="test_update_cart_with_invalid_cart" time="0.000" timestamp="2020-04-20T14:18:37" file="src\unittest\python\cart_route_tests.py" line="29">
+		<error type="AttributeError" message="module 'jwt' has no attribute 'encode'"><![CDATA[Traceback (most recent call last):
+  File "c:\users\michael\desktop\soft_eng\project\ecommerce_site\backend\src\unittest\python\cart_route_tests.py", line 17, in setUp
+    self.token = jwt.encode(
+AttributeError: module 'jwt' has no attribute 'encode'
+]]></error>
+		<system-out><![CDATA[]]></system-out>
+		<system-err><![CDATA[]]></system-err>
+	</testcase>
+	<testcase classname="cart_route_tests.CartRouteTest" name="test_update_cart_with_valid_cart" time="0.000" timestamp="2020-04-20T14:18:37" file="src\unittest\python\cart_route_tests.py" line="43">
+		<error type="AttributeError" message="module 'jwt' has no attribute 'encode'"><![CDATA[Traceback (most recent call last):
+  File "c:\users\michael\desktop\soft_eng\project\ecommerce_site\backend\src\unittest\python\cart_route_tests.py", line 17, in setUp
+    self.token = jwt.encode(
+AttributeError: module 'jwt' has no attribute 'encode'
+]]></error>
+		<system-out><![CDATA[]]></system-out>
+		<system-err><![CDATA[]]></system-err>
+	</testcase>
+</testsuite>

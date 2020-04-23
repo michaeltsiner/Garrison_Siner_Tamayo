@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite errors="2" failures="0" file="order_route_tests.py" name="order_route_tests.OrderRouteTest-20200412165146" skipped="0" tests="2" time="0.002" timestamp="2020-04-12T16:51:46">
+	<testcase classname="order_route_tests.OrderRouteTest" file="src\unittest\python\order_route_tests.py" line="28" name="test_send_order_with_invalid_order" time="0.001" timestamp="2020-04-12T16:51:46">
+		<error message="module 'jwt' has no attribute 'encode'" type="AttributeError">
+<![CDATA[Traceback (most recent call last):
+  File "c:\users\michael\desktop\soft_eng\project\ecommerce_site\backend\src\unittest\python\order_route_tests.py", line 16, in setUp
+    self.token = jwt.encode(
+AttributeError: module 'jwt' has no attribute 'encode'
+]]>		</error>
+		<system-out>
+<![CDATA[]]>		</system-out>
+		<system-err>
+<![CDATA[]]>		</system-err>
+	</testcase>
+	<testcase classname="order_route_tests.OrderRouteTest" file="src\unittest\python\order_route_tests.py" line="42" name="test_send_order_with_valid_order" time="0.001" timestamp="2020-04-12T16:51:46">
+		<error message="module 'jwt' has no attribute 'encode'" type="AttributeError">
+<![CDATA[Traceback (most recent call last):
+  File "c:\users\michael\desktop\soft_eng\project\ecommerce_site\backend\src\unittest\python\order_route_tests.py", line 16, in setUp
+    self.token = jwt.encode(
+AttributeError: module 'jwt' has no attribute 'encode'
+]]>		</error>
+		<system-out>
+<![CDATA[]]>		</system-out>
+		<system-err>
+<![CDATA[]]>		</system-err>
+	</testcase>
+</testsuite>

@@ -1,0 +1,47 @@
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+nav > div {
+  min-height: 30px;
+  padding: 1rem 2rem;
+}
+
+nav {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  justify-items: start;
+  border-bottom: 2px solid #CFCFCF;
+}
+
+.products {
+  background-color: #F5F5F5;
+  height: 100vh;
+}
+
+.products h1 {
+  text-align: center;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.products h2 {
+  text-align: center;
+}
+
+.products-container {
+  margin-top: 1rem;
+  display: grid;
+  text-align: center;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+}
+
+.product {
+  border-radius: .5rem;
+  background-color: gray;
+  opacity: 0.6;
+  padding: 5rem;
+  transition: 0.3s;
+}

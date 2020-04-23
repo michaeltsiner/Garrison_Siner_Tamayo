@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="account_route_tests.AccountRouteTest-20200419094605" tests="5" file="account_route_tests.py" time="0.030" timestamp="2020-04-19T09:46:05" failures="0" errors="0" skipped="0">
+	<testcase classname="account_route_tests.AccountRouteTest" name="test_create_customer_account_but_username_is_taken" time="0.023" timestamp="2020-04-19T09:46:05" file="src\unittest\python\account_route_tests.py" line="47">
+		<system-out><![CDATA[]]></system-out>
+		<system-err><![CDATA[]]></system-err>
+	</testcase>
+	<testcase classname="account_route_tests.AccountRouteTest" name="test_create_customer_account_succesfully" time="0.003" timestamp="2020-04-19T09:46:05" file="src\unittest\python\account_route_tests.py" line="58">
+		<system-out><![CDATA[]]></system-out>
+		<system-err><![CDATA[]]></system-err>
+	</testcase>
+	<testcase classname="account_route_tests.AccountRouteTest" name="test_create_customer_account_with_invalid_account_data" time="0.001" timestamp="2020-04-19T09:46:05" file="src\unittest\python\account_route_tests.py" line="37">
+		<system-out><![CDATA[]]></system-out>
+		<system-err><![CDATA[]]></system-err>
+	</testcase>
+	<testcase classname="account_route_tests.AccountRouteTest" name="test_create_customer_account_with_missing_fields" time="0.002" timestamp="2020-04-19T09:46:05" file="src\unittest\python\account_route_tests.py" line="30">
+		<system-out><![CDATA[]]></system-out>
+		<system-err><![CDATA[]]></system-err>
+	</testcase>
+	<testcase classname="account_route_tests.AccountRouteTest" name="test_static_page" time="0.001" timestamp="2020-04-19T09:46:05" file="src\unittest\python\account_route_tests.py" line="69">
+		<system-out><![CDATA[]]></system-out>
+		<system-err><![CDATA[]]></system-err>
+	</testcase>
+</testsuite>

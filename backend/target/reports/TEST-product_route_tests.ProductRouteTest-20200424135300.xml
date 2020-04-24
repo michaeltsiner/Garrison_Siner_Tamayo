@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite errors="0" failures="0" file="product_route_tests.py" name="product_route_tests.ProductRouteTest-20200424135300" skipped="0" tests="2" time="0.004" timestamp="2020-04-24T13:53:01">
+	<testcase classname="product_route_tests.ProductRouteTest" file="src\unittest\python\product_route_tests.py" line="28" name="test_get_products_with_none_in_database" time="0.002" timestamp="2020-04-24T13:53:01">
+		<system-out>
+<![CDATA[]]>		</system-out>
+		<system-err>
+<![CDATA[]]>		</system-err>
+	</testcase>
+	<testcase classname="product_route_tests.ProductRouteTest" file="src\unittest\python\product_route_tests.py" line="36" name="test_get_products_with_one_in_database" time="0.002" timestamp="2020-04-24T13:53:01">
+		<system-out>
+<![CDATA[]]>		</system-out>
+		<system-err>
+<![CDATA[]]>		</system-err>
+	</testcase>
+</testsuite>

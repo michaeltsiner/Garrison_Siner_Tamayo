@@ -1,31 +1,68 @@
 import sqlite3
 from hashlib import sha256
+from urllib.request import urlopen
+import urllib.parse
+from math import floor
 
 
 class Database(object):
 	database_uri = None
-	conn = None
 
 	def __init__(self, database_uri):
 		self.database_uri = database_uri
 
-	def open_connection(self):
-		self.conn = sqlite3.connect(self.database_uri, check_same_thread=False)
-
-	def close_connection(self):
-		self.conn.close()
-
 	def account_exists(self, username):
-		c = self.conn.cursor()
+		conn = sqlite3.connect(self.database_uri, check_same_thread=False)
+		c = conn.cursor()
 
 		c.execute('''
 			SELECT * FROM Accounts WHERE username = ?;
 		''', (username,))
 
-		return c.fetchone() is not None
+		result = c.fetchone()
+
+		conn.commit()
+		conn.close()
+
+		return result is not None
+
+	def address_is_valid(self, address):  # pragma: no cover
+		request_xml = f'''
+			<?xml version="1.0"?>
+			<AddressValidateRequest USERID="657UNIVE7805">
+				<Revision>1</Revision>
+				<Address ID="0">
+					<Address1></Address1>
+					<Address2>{address["street"]}</Address2>
+					<City>{address["city"]}</City>
+					<State>{address["state"]}</State>
+					<Zip5>{address["zip"]}</Zip5>
+					<Zip4></Zip4>
+				</Address>
+			</AddressValidateRequest>
+		'''
+
+		api_endpoint = "http://production.shippingapis.com/ShippingAPI.dll?API=Verify&XML="
+
+		with urlopen(api_endpoint + urllib.parse.quote(request_xml)) as response:
+			response_xml = response.read().decode().upper()
+
+			if "</Error>" in response_xml:
+				return False
+			elif f'<Address2>{address["street"]}</Address2>'.upper() not in response_xml:
+				return False
+			elif f'<City>{address["city"]}</City>'.upper() not in response_xml:
+				return False
+			elif f'<State>{address["state"]}</State>'.upper() not in response_xml:
+				return False
+			elif f'<Zip5>{address["zip"]}</Zip5>'.upper() not in response_xml:
+				return False
+			else:
+				return True
 
 	def find_credentials(self, credentials):
-		c = self.conn.cursor()
+		conn = sqlite3.connect(self.database_uri, check_same_thread=False)
+		c = conn.cursor()
 
 		username = credentials.get("username")
 		password = sha256(credentials.get("password").encode()).hexdigest()
@@ -34,10 +71,16 @@ class Database(object):
 			SELECT * FROM Accounts WHERE username = ? and password = ?;
 		''', (username, password,))
 
-		return c.fetchone() is not None
+		result = c.fetchone()
+
+		conn.commit()
+		conn.close()
+
+		return result is not None
 
 	def get_role(self, username):
-		c = self.conn.cursor()
+		conn = sqlite3.connect(self.database_uri, check_same_thread=False)
+		c = conn.cursor()
 
 		c.execute('''
 			SELECT * FROM Admins
@@ -47,12 +90,17 @@ class Database(object):
 		''', (username,))
 
 		if c.fetchone() is not None:
+			conn.commit()
+			conn.close()
 			return "admin"
 		else:
+			conn.commit()
+			conn.close()
 			return "customer"
 
 	def get_products(self):
-		c = self.conn.cursor()
+		conn = sqlite3.connect(self.database_uri, check_same_thread=False)
+		c = conn.cursor()
 
 		c.execute('''
 			SELECT * FROM Products;
@@ -63,20 +111,81 @@ class Database(object):
 
 		products = [dict(zip(column_names, product_values)) for product_values in product_rows]
 
+		conn.commit()
+		conn.close()
+
 		return products
 
+	def get_categories(self):
+		conn = sqlite3.connect(self.database_uri, check_same_thread=False)
+		c = conn.cursor()
+
+		c.execute('''
+			SELECT * FROM Categories;
+		''')
+
+		column_names = next(zip(*c.description))
+		category_rows = c.fetchall()
+
+		categories = [dict(zip(column_names, category_values)) for category_values in category_rows]
+
+		conn.commit()
+		conn.close()
+
+		return categories
+
+	def get_user_orders(self, username):
+		conn = sqlite3.connect(self.database_uri, check_same_thread=False)
+		c = conn.cursor()
+
+		c.execute('''
+			SELECT *
+			FROM Orders
+			WHERE accountID = (SELECT accountID
+				FROM Accounts
+				WHERE username = ?);
+		''', (username,))
+
+		column_names = next(zip(*c.description))
+		order_rows = c.fetchall()
+
+		orders = [dict(zip(column_names, order_values)) for order_values in order_rows]
+
+		order_ids = [order["orderID"] for order in orders]
+
+		for index, order_id in enumerate(order_ids):
+			c.execute('''
+				SELECT *
+				FROM OrderDetails
+				WHERE orderID = ?;
+			''', (order_id,))
+
+			item_column_names = next(zip(*c.description))
+			item_rows = c.fetchall()
+
+			items = [dict(zip(item_column_names, item_values)) for item_values in item_rows]
+
+			orders[index]["items"] = items
+
+		conn.commit()
+		conn.close()
+		return orders
+
 	def add_category(self, category_name):
-		c = self.conn.cursor()
+		conn = sqlite3.connect(self.database_uri, check_same_thread=False)
+		c = conn.cursor()
 
 		c.execute('''
 			INSERT INTO Categories(categoryName)
 			VALUES(?);
 		''', (category_name,))
 
-		self.conn.commit()
+		conn.commit()
+		conn.close()
 
 	def add_product(self, product):
-		c = self.conn.cursor()
+		conn = sqlite3.connect(self.database_uri, check_same_thread=False)
+		c = conn.cursor()
 
 		product_details = [
 			product.get("categoryID"),
@@ -86,6 +195,8 @@ class Database(object):
 			product.get("price"),
 			product.get("quantityAvailable"),
 		]
+
+		# TODO verify category id exists
 
 		c.execute('''
 			INSERT INTO Products(
@@ -99,11 +210,13 @@ class Database(object):
 			VALUES(?,?,?,?,?,?);
 		''', product_details)
 
-		self.conn.commit()
+		conn.commit()
+		conn.close()
 
 	# TODO this whole function could probably be enhanced/made more efficient using some more advanced sql
 	def add_order(self, order):
-		c = self.conn.cursor()
+		conn = sqlite3.connect(self.database_uri, check_same_thread=False)
+		c = conn.cursor()
 
 		username = order["username"]
 
@@ -126,7 +239,16 @@ class Database(object):
 			FROM Customers WHERE accountID = ?;
 		''', account_id)
 
-		account_shipping_and_billing = c.fetchone()
+		account_shipping_and_billing = (
+			order.get("street"),
+			order.get("city"),
+			order.get("state"),
+			order.get("zip"),
+			order.get("street"),
+			order.get("city"),
+			order.get("state"),
+			order.get("zip"),
+		)
 
 		account_details = (account_id + account_shipping_and_billing)
 
@@ -189,9 +311,9 @@ class Database(object):
 
 		tax_rate = 0.0825
 
-		tax_cost = int(order_product_sum * tax_rate)
+		tax_cost = floor(order_product_sum * tax_rate)
 
-		total_cost = order_product_sum + tax_cost
+		total_cost = floor(order_product_sum + tax_cost)
 
 		shipping_cost = 0  # free shipping
 
@@ -204,11 +326,67 @@ class Database(object):
 			WHERE orderID = ?;
 		''', (tax_cost, shipping_cost, total_cost, order_id,))
 
-		self.conn.commit()
+		conn.commit()
+		conn.close()
+
+	def get_cart(self, username):
+
+		conn = sqlite3.connect(self.database_uri, check_same_thread=False)
+		c = conn.cursor()
+
+		c.execute('''
+			SELECT cartID
+			FROM Customers
+			WHERE accountID = (
+				SELECT accountID
+				FROM Accounts
+				WHERE username = ?
+			);
+		''', (username,))
+
+		cart_id = c.fetchone()
+
+		cart_id = cart_id[0] if cart_id is not None else None
+
+		if cart_id is None:
+			# create cart
+			c.execute('''
+				INSERT INTO Carts(accountID)
+				SELECT accountID
+				FROM Accounts
+				WHERE username = ?;
+			''', (username,))
+			cart_id = c.lastrowid
+
+			# update customer cart id
+			c.execute('''
+				UPDATE Customers
+				SET cartID = ?
+				WHERE accountID = (
+					SELECT accountID
+					FROM Accounts
+					WHERE username = ?
+				);
+			''', (cart_id, username,))
+
+		c.execute('''
+			SELECT productID, quantity FROM CartDetails
+			WHERE cartID = ?;
+			''', (cart_id,))
+
+		column_names = next(zip(*c.description))
+
+		cart_detail_rows = c.fetchall()
+
+		cart = {"orderDetails": [dict(zip(column_names, cart_detail)) for cart_detail in cart_detail_rows]}
+		conn.commit()
+		conn.close()
+		return cart
 
 	def update_cart(self, cart):
 		# get account id, and cart id
-		c = self.conn.cursor()
+		conn = sqlite3.connect(self.database_uri, check_same_thread=False)
+		c = conn.cursor()
 
 		username = cart["username"]
 
@@ -240,7 +418,7 @@ class Database(object):
 			''', (cart_id, account_id[0],))
 
 		cartDetails = [
-			(cart_id, cartDetail["quantity"], cartDetail["productID"])
+			(cart_id, cartDetail["productID"], cartDetail["quantity"])
 			for cartDetail in cart["orderDetails"]
 		]
 
@@ -264,10 +442,12 @@ class Database(object):
 		''', cartDetails)
 
 		# insert cart items
-		self.conn.commit()
+		conn.commit()
+		conn.close()
 
 	def add_customer(self, account):
-		c = self.conn.cursor()
+		conn = sqlite3.connect(self.database_uri, check_same_thread=False)
+		c = conn.cursor()
 
 		account_details = [
 			account.get("username"),
@@ -290,10 +470,12 @@ class Database(object):
 			SELECT accountID FROM Accounts WHERE username = ?;
 		''', (account_details[0],))
 
-		self.conn.commit()
+		conn.commit()
+		conn.close()
 
 	def create_accounts_table(self):
-		c = self.conn.cursor()
+		conn = sqlite3.connect(self.database_uri, check_same_thread=False)
+		c = conn.cursor()
 
 		c.execute('''
 			CREATE TABLE IF NOT EXISTS Accounts (
@@ -324,9 +506,12 @@ class Database(object):
 			(username, password, firstName, middleInitial, lastName, phoneNumber, email)
 			VALUES(?, ?, ?, ?, ?, ?, ?);
 		''', admin_account)
+		conn.commit()
+		conn.close()
 
 	def create_admins_table(self):
-		c = self.conn.cursor()
+		conn = sqlite3.connect(self.database_uri, check_same_thread=False)
+		c = conn.cursor()
 
 		c.execute('''
 			CREATE TABLE IF NOT EXISTS Admins (
@@ -342,9 +527,12 @@ class Database(object):
 			SELECT accountID
 			FROM Accounts WHERE username = "admin";
 		''')
+		conn.commit()
+		conn.close()
 
 	def create_customers_table(self):
-		c = self.conn.cursor()
+		conn = sqlite3.connect(self.database_uri, check_same_thread=False)
+		c = conn.cursor()
 
 		c.execute('''
 			CREATE TABLE IF NOT EXISTS Customers (
@@ -363,9 +551,12 @@ class Database(object):
 				ON DELETE CASCADE
 			);
 		''')
+		conn.commit()
+		conn.close()
 
 	def create_categories_table(self):
-		c = self.conn.cursor()
+		conn = sqlite3.connect(self.database_uri, check_same_thread=False)
+		c = conn.cursor()
 
 		c.execute('''
 			CREATE TABLE IF NOT EXISTS Categories (
@@ -373,9 +564,12 @@ class Database(object):
 				categoryName TEXT
 			);
 		''')
+		conn.commit()
+		conn.close()
 
 	def create_products_table(self):
-		c = self.conn.cursor()
+		conn = sqlite3.connect(self.database_uri, check_same_thread=False)
+		c = conn.cursor()
 
 		c.execute('''
 			CREATE TABLE IF NOT EXISTS Products (
@@ -390,9 +584,12 @@ class Database(object):
 				ON DELETE CASCADE
 			);
 		''')
+		conn.commit()
+		conn.close()
 
 	def create_orders_table(self):
-		c = self.conn.cursor()
+		conn = sqlite3.connect(self.database_uri, check_same_thread=False)
+		c = conn.cursor()
 
 		c.execute('''
 			CREATE TABLE IF NOT EXISTS Orders (
@@ -414,9 +611,12 @@ class Database(object):
 				ON DELETE CASCADE
 			);
 		''')
+		conn.commit()
+		conn.close()
 
 	def create_order_details_table(self):
-		c = self.conn.cursor()
+		conn = sqlite3.connect(self.database_uri, check_same_thread=False)
+		c = conn.cursor()
 
 		c.execute('''
 			CREATE TABLE IF NOT EXISTS OrderDetails (
@@ -429,9 +629,12 @@ class Database(object):
 				quantity INTEGER
 			);
 		''')
+		conn.commit()
+		conn.close()
 
 	def create_carts_table(self):
-		c = self.conn.cursor()
+		conn = sqlite3.connect(self.database_uri, check_same_thread=False)
+		c = conn.cursor()
 
 		c.execute('''
 			CREATE TABLE IF NOT EXISTS Carts (
@@ -441,9 +644,12 @@ class Database(object):
 				ON DELETE CASCADE
 			);
 		''')
+		conn.commit()
+		conn.close()
 
 	def create_cart_details_table(self):
-		c = self.conn.cursor()
+		conn = sqlite3.connect(self.database_uri, check_same_thread=False)
+		c = conn.cursor()
 
 		c.execute('''
 			CREATE TABLE IF NOT EXISTS CartDetails (
@@ -457,6 +663,8 @@ class Database(object):
 				ON DELETE CASCADE
 			);
 		''')
+		conn.commit()
+		conn.close()
 
 	def initialize_database(self):
 		self.create_accounts_table()
@@ -468,4 +676,3 @@ class Database(object):
 		self.create_order_details_table()
 		self.create_carts_table()
 		self.create_cart_details_table()
-		self.conn.commit()

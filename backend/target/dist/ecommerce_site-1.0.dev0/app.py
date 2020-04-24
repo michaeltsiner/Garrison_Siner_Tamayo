@@ -8,7 +8,6 @@ from flask_cors import CORS
 from database import Database
 from data_validator import valid_account_data, valid_credentials_data, valid_order_data
 
-
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "SOMESUPERSECUREKEY"
 CORS(app)
@@ -64,13 +63,34 @@ def update_cart():
 	if cart and valid_order_data(cart):  # valid cart data is the same as valid order data
 		token_body = json.loads(base64.b64decode(request.headers.get("Authorization").split(".")[1] + "==").decode())
 		cart["username"] = token_body["username"]
-		db.open_connection()
 		# TODO handle error
 		db.update_cart(cart)
-		db.close_connection()
 		return jsonify({"msg": "successfuly updated cart"})
 	else:
 		return jsonify({"msg": "no/invalid json data or missing json content type header"}), 400
+
+
+@app.route("/api/carts", methods=["GET"])
+@token_protected
+def get_cart():
+	token_body = json.loads(base64.b64decode(request.headers.get("Authorization").split(".")[1] + "==").decode())
+	username = token_body["username"]
+	cart = db.get_cart(username)
+	cart["username"] = username
+	return jsonify(cart)
+
+
+@app.route("/api/users/<username>/orders", methods=["GET"])
+@token_protected
+def get_orders(username):
+	token_body = json.loads(base64.b64decode(request.headers.get("Authorization").split(".")[1] + "==").decode())
+	request_username = token_body["username"]
+
+	if request_username != username:
+		return jsonify({"msg": "unauthorized"}), 401
+	else:
+		user_orders = db.get_user_orders(request_username)
+		return jsonify(user_orders)
 
 
 @app.route("/api/orders", methods=["POST"])
@@ -80,28 +100,37 @@ def add_order():
 	if order and valid_order_data(order):
 		token_body = json.loads(base64.b64decode(request.headers.get("Authorization").split(".")[1] + "==").decode())
 		order["username"] = token_body["username"]
-		db.open_connection()
-		# TODO handle error
-		db.add_order(order)
-		db.close_connection()
-		return jsonify({"msg": "successfuly created order"})
+
+		if db.address_is_valid(order):
+			# TODO handle error
+			db.add_order(order)
+			empty_cart = {"username": order["username"], "orderDetails": []}
+			db.update_cart(empty_cart)
+			return jsonify({"msg": "successfuly created order"})
+		else:
+			return jsonify({"msg": "address is invalid"}), 400
+
 	else:
 		return jsonify({"msg": "no/invalid json data or missing json content type header"}), 400
 
 
 @app.route("/api/products", methods=["GET"])
 def get_products():
-	db.open_connection()
 	products = db.get_products()
-	db.close_connection()
+
 	return jsonify(products)
+
+
+@app.route("/api/categories", methods=["GET"])
+def get_categories():
+	categories = db.get_categories()
+	return jsonify(categories)
 
 
 @app.route("/api/auth", methods=["POST"])
 def authenticate_user():
 	credentials = request.json
 	if credentials and valid_credentials_data(credentials):
-		db.open_connection()
 		if db.find_credentials(credentials):
 			token = jwt.encode(
 				{
@@ -113,10 +142,8 @@ def authenticate_user():
 			)
 			response = make_response(jsonify({"msg": "successfuly authenticated", "jwt": token.decode()}))
 			response.set_cookie("jwt", token.decode())
-			db.close_connection()
 			return response
 		else:
-			db.close_connection()
 			return jsonify({"msg": "username or password is invalid"}), 401
 	else:
 		return jsonify({"msg": "no/invalid json data or missing json content type header"}), 400
@@ -126,13 +153,10 @@ def authenticate_user():
 def create_customer_account():
 	account = request.json
 	if account and valid_account_data(account):
-		db.open_connection()
 		if not db.account_exists(account["username"]):
 			db.add_customer(account)
-			db.close_connection()
 			return jsonify({"msg": "account created"})
 		else:
-			db.close_connection()
 			return jsonify({"msg": "could not create account, username taken"}), 409
 	else:
 		return jsonify({"msg": "no/invalid json data or missing json content type header"}), 400

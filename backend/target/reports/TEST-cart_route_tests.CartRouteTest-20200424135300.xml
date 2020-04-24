@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite errors="0" failures="0" file="cart_route_tests.py" name="cart_route_tests.CartRouteTest-20200424135300" skipped="0" tests="3" time="0.009" timestamp="2020-04-24T13:53:00">
+	<testcase classname="cart_route_tests.CartRouteTest" file="src\unittest\python\cart_route_tests.py" line="55" name="test_get_cart_with_empty_user_cart" time="0.006" timestamp="2020-04-24T13:53:00">
+		<system-out>
+<![CDATA[]]>		</system-out>
+		<system-err>
+<![CDATA[]]>		</system-err>
+	</testcase>
+	<testcase classname="cart_route_tests.CartRouteTest" file="src\unittest\python\cart_route_tests.py" line="29" name="test_update_cart_with_invalid_cart" time="0.001" timestamp="2020-04-24T13:53:00">
+		<system-out>
+<![CDATA[]]>		</system-out>
+		<system-err>
+<![CDATA[]]>		</system-err>
+	</testcase>
+	<testcase classname="cart_route_tests.CartRouteTest" file="src\unittest\python\cart_route_tests.py" line="43" name="test_update_cart_with_valid_cart" time="0.002" timestamp="2020-04-24T13:53:00">
+		<system-out>
+<![CDATA[]]>		</system-out>
+		<system-err>
+<![CDATA[]]>		</system-err>
+	</testcase>
+</testsuite>

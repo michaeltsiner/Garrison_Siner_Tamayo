@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite errors="0" failures="0" file="database_tests.py" name="database_tests.DatabaseTest-20200424152752" skipped="0" tests="15" time="1.871" timestamp="2020-04-24T15:27:54">
+	<testcase classname="database_tests.DatabaseTest" file="src\unittest\python\database_tests.py" line="28" name="test_account_exists_with_existing_account" time="0.092" timestamp="2020-04-24T15:27:53">
+		<system-out>
+<![CDATA[]]>		</system-out>
+		<system-err>
+<![CDATA[]]>		</system-err>
+	</testcase>
+	<testcase classname="database_tests.DatabaseTest" file="src\unittest\python\database_tests.py" line="24" name="test_account_exists_with_nonexisting_account" time="0.083" timestamp="2020-04-24T15:27:53">
+		<system-out>
+<![CDATA[]]>		</system-out>
+		<system-err>
+<![CDATA[]]>		</system-err>
+	</testcase>
+	<testcase classname="database_tests.DatabaseTest" file="src\unittest\python\database_tests.py" line="35" name="test_add_customer" time="0.093" timestamp="2020-04-24T15:27:53">
+		<system-out>
+<![CDATA[]]>		</system-out>
+		<system-err>
+<![CDATA[]]>		</system-err>
+	</testcase>
+	<testcase classname="database_tests.DatabaseTest" file="src\unittest\python\database_tests.py" line="81" name="test_add_order_with_one_order" time="0.116" timestamp="2020-04-24T15:27:53">
+		<system-out>
+<![CDATA[]]>		</system-out>
+		<system-err>
+<![CDATA[]]>		</system-err>
+	</testcase>
+	<testcase classname="database_tests.DatabaseTest" file="src\unittest\python\database_tests.py" line="49" name="test_find_credentials_with_non_existing_credentials" time="0.091" timestamp="2020-04-24T15:27:53">
+		<system-out>
+<![CDATA[]]>		</system-out>
+		<system-err>
+<![CDATA[]]>		</system-err>
+	</testcase>
+	<testcase classname="database_tests.DatabaseTest" file="src\unittest\python\database_tests.py" line="177" name="test_get_cart_with_no_previous_cart" time="0.114" timestamp="2020-04-24T15:27:53">
+		<system-out>
+<![CDATA[]]>		</system-out>
+		<system-err>
+<![CDATA[]]>		</system-err>
+	</testcase>
+	<testcase classname="database_tests.DatabaseTest" file="src\unittest\python\database_tests.py" line="186" name="test_get_cart_with_previous_cart" time="0.102" timestamp="2020-04-24T15:27:53">
+		<system-out>
+<![CDATA[]]>		</system-out>
+		<system-err>
+<![CDATA[]]>		</system-err>
+	</testcase>
+	<testcase classname="database_tests.DatabaseTest" file="src\unittest\python\database_tests.py" line="73" name="test_get_categories_with_no_products_in_database" time="0.146" timestamp="2020-04-24T15:27:53">
+		<system-out>
+<![CDATA[]]>		</system-out>
+		<system-err>
+<![CDATA[]]>		</system-err>
+	</testcase>
+	<testcase classname="database_tests.DatabaseTest" file="src\unittest\python\database_tests.py" line="67" name="test_get_products_with_no_products_in_database" time="0.167" timestamp="2020-04-24T15:27:53">
+		<system-out>
+<![CDATA[]]>		</system-out>
+		<system-err>
+<![CDATA[]]>		</system-err>
+	</testcase>
+	<testcase classname="database_tests.DatabaseTest" file="src\unittest\python\database_tests.py" line="56" name="test_get_role_with_admin_account" time="0.167" timestamp="2020-04-24T15:27:54">
+		<system-out>
+<![CDATA[]]>		</system-out>
+		<system-err>
+<![CDATA[]]>		</system-err>
+	</testcase>
+	<testcase classname="database_tests.DatabaseTest" file="src\unittest\python\database_tests.py" line="60" name="test_get_role_with_customer_account" time="0.143" timestamp="2020-04-24T15:27:54">
+		<system-out>
+<![CDATA[]]>		</system-out>
+		<system-err>
+<![CDATA[]]>		</system-err>
+	</testcase>
+	<testcase classname="database_tests.DatabaseTest" file="src\unittest\python\database_tests.py" line="216" name="test_get_user_orders_empty" time="0.137" timestamp="2020-04-24T15:27:54">
+		<system-out>
+<![CDATA[]]>		</system-out>
+		<system-err>
+<![CDATA[]]>		</system-err>
+	</testcase>
+	<testcase classname="database_tests.DatabaseTest" file="src\unittest\python\database_tests.py" line="224" name="test_get_user_orders_one_order" time="0.185" timestamp="2020-04-24T15:27:54">
+		<system-out>
+<![CDATA[]]>		</system-out>
+		<system-err>
+<![CDATA[]]>		</system-err>
+	</testcase>
+	<testcase classname="database_tests.DatabaseTest" file="src\unittest\python\database_tests.py" line="109" name="test_update_cart_with_no_previous_cart" time="0.114" timestamp="2020-04-24T15:27:54">
+		<system-out>
+<![CDATA[]]>		</system-out>
+		<system-err>
+<![CDATA[]]>		</system-err>
+	</testcase>
+	<testcase classname="database_tests.DatabaseTest" file="src\unittest\python\database_tests.py" line="137" name="test_update_cart_with_previous_cart" time="0.122" timestamp="2020-04-24T15:27:54">
+		<system-out>
+<![CDATA[]]>		</system-out>
+		<system-err>
+<![CDATA[]]>		</system-err>
+	</testcase>
+</testsuite>

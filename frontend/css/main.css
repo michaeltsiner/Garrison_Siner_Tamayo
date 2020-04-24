@@ -2,7 +2,7 @@ body {margin:0;}
 
 .navbar {
   overflow: hidden;
-  background-color: #333;
+  background-color: rgb(22, 120, 145);
   position: fixed;
   top: 0;
   width: 100%;
@@ -19,12 +19,16 @@ body {margin:0;}
 }
 
 .navbar a:hover {
-  background: #ddd;
-  color: black;
+  background: rgb(19, 88, 105);
+  color: white;
 }
 
 .main {
   padding: 16px;
   margin-top: 30px;
   height: 1500px; /* Used in this example to enable scrolling */
+}
+
+.span {
+  color: aliceblue;
 }

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite errors="0" failures="0" file="authentication_route_tests.py" name="authentication_route_tests.AccountRouteTest-20200424152755" skipped="0" tests="7" time="0.025" timestamp="2020-04-24T15:27:55">
+	<testcase classname="authentication_route_tests.AccountRouteTest" file="src\unittest\python\authentication_route_tests.py" line="32" name="test_authenticate_user_invalid_credentials_data" time="0.004" timestamp="2020-04-24T15:27:55">
+		<system-out>
+<![CDATA[]]>		</system-out>
+		<system-err>
+<![CDATA[]]>		</system-err>
+	</testcase>
+	<testcase classname="authentication_route_tests.AccountRouteTest" file="src\unittest\python\authentication_route_tests.py" line="52" name="test_authenticate_user_with_credentials_found" time="0.008" timestamp="2020-04-24T15:27:55">
+		<system-out>
+<![CDATA[]]>		</system-out>
+		<system-err>
+<![CDATA[]]>		</system-err>
+	</testcase>
+	<testcase classname="authentication_route_tests.AccountRouteTest" file="src\unittest\python\authentication_route_tests.py" line="42" name="test_authenticate_user_with_credentials_not_found" time="0.003" timestamp="2020-04-24T15:27:55">
+		<system-out>
+<![CDATA[]]>		</system-out>
+		<system-err>
+<![CDATA[]]>		</system-err>
+	</testcase>
+	<testcase classname="authentication_route_tests.AccountRouteTest" file="src\unittest\python\authentication_route_tests.py" line="25" name="test_authenticate_user_with_missing_fields" time="0.001" timestamp="2020-04-24T15:27:55">
+		<system-out>
+<![CDATA[]]>		</system-out>
+		<system-err>
+<![CDATA[]]>		</system-err>
+	</testcase>
+	<testcase classname="authentication_route_tests.AccountRouteTest" file="src\unittest\python\authentication_route_tests.py" line="68" name="test_token_protected_with_invalid_token" time="0.004" timestamp="2020-04-24T15:27:55">
+		<system-out>
+<![CDATA[
+]]>		</system-out>
+		<system-err>
+<![CDATA[]]>		</system-err>
+	</testcase>
+	<testcase classname="authentication_route_tests.AccountRouteTest" file="src\unittest\python\authentication_route_tests.py" line="62" name="test_token_protected_with_no_authorization_headers" time="0.002" timestamp="2020-04-24T15:27:55">
+		<system-out>
+<![CDATA[]]>		</system-out>
+		<system-err>
+<![CDATA[]]>		</system-err>
+	</testcase>
+	<testcase classname="authentication_route_tests.AccountRouteTest" file="src\unittest\python\authentication_route_tests.py" line="78" name="test_token_protected_with_valid_token" time="0.003" timestamp="2020-04-24T15:27:55">
+		<system-out>
+<![CDATA[]]>		</system-out>
+		<system-err>
+<![CDATA[]]>		</system-err>
+	</testcase>
+</testsuite>

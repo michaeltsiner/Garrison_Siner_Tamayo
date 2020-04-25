@@ -32,7 +32,7 @@ def token_protected(f):
 	return authenticate_token
 
 
-# disable cacheing of static files, this is temporary only to help with developtment
+# disable cacheing of static files, this is temporary only to help with development
 @app.after_request
 def add_header(r):
 	r.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
@@ -80,6 +80,19 @@ def get_cart():
 	return jsonify(cart)
 
 
+@app.route("/api/orders", methods=["GET"])
+@token_protected
+def get_all_orders():  # pragma: no cover
+	token_body = json.loads(base64.b64decode(request.headers.get("Authorization").split(".")[1] + "==").decode())
+	role = token_body["role"]
+
+	if role == "admin":
+		placed_orders = db.get_all_orders()
+		return jsonify(placed_orders)
+	else:
+		return jsonify({"msg": "unauthorized"}), 401
+
+
 @app.route("/api/users/<username>/orders", methods=["GET"])
 @token_protected
 def get_orders(username):
@@ -112,6 +125,34 @@ def add_order():
 
 	else:
 		return jsonify({"msg": "no/invalid json data or missing json content type header"}), 400
+
+
+@app.route("/api/categories", methods=["POST"])
+@token_protected
+def add_category():  # pragma: no cover
+	token_body = json.loads(base64.b64decode(request.headers.get("Authorization").split(".")[1] + "==").decode())
+	role = token_body["role"]
+
+	if role == "admin":
+		db.add_category(request.json["name"])
+		return jsonify({"msg": "successfuly created category"})
+	else:
+		return jsonify({"msg": "unauthorized"}), 401
+
+
+@app.route("/api/products", methods=["POST"])
+@token_protected
+def add_product():  # pragma: no cover
+	token_body = json.loads(base64.b64decode(request.headers.get("Authorization").split(".")[1] + "==").decode())
+	role = token_body["role"]
+
+	if role == "admin":
+		product = request.json
+		print(product)
+		db.add_product(product)
+		return jsonify({"msg": "successfuly created product"})
+	else:
+		return jsonify({"msg": "unauthorized"}), 401
 
 
 @app.route("/api/products", methods=["GET"])

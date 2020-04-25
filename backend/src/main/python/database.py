@@ -134,6 +134,41 @@ class Database(object):
 
 		return categories
 
+	def get_all_orders(self):  # pragma: no cover
+		conn = sqlite3.connect(self.database_uri, check_same_thread=False)
+		c = conn.cursor()
+
+		c.execute('''
+			SELECT Accounts.username, Orders.*
+			FROM Orders, Accounts
+			WHERE Orders.accountID == Accounts.accountID;
+		''',)
+
+		column_names = next(zip(*c.description))
+		order_rows = c.fetchall()
+
+		orders = [dict(zip(column_names, order_values)) for order_values in order_rows]
+
+		order_ids = [order["orderID"] for order in orders]
+
+		for index, order_id in enumerate(order_ids):
+			c.execute('''
+				SELECT *
+				FROM OrderDetails
+				WHERE orderID = ?;
+			''', (order_id,))
+
+			item_column_names = next(zip(*c.description))
+			item_rows = c.fetchall()
+
+			items = [dict(zip(item_column_names, item_values)) for item_values in item_rows]
+
+			orders[index]["items"] = items
+
+		conn.commit()
+		conn.close()
+		return orders
+
 	def get_user_orders(self, username):
 		conn = sqlite3.connect(self.database_uri, check_same_thread=False)
 		c = conn.cursor()

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<script type="text/javascript" src="js/angular.min.js"></script>
+		<script type="text/javascript" src="js/angular-cookies.min.js"></script>
+		<script type="text/javascript" src="js/admin.js"></script>
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/account.css">
+		<title>Admin</title>
+		<base href="/" />
+	</head>
+	<body ng-app="admin" ng-controller="adminController" ng-init="initialize()">
+		<section class="selector">
+			<label><input type="radio" ng-model="action" value="viewOrders">View Orders Placed</label>
+			<label><input type="radio" ng-model="action" value="addCategory">Create Category</label>
+			<label><input type="radio" ng-model="action" value="addProduct">Add Product</label>
+		</section>
+
+		<section ng-show="action == 'viewOrders'" class="orders-container">
+			<button ng-click="getAllOrders()">Load All Orders</button>
+			<div class="order" ng-repeat="order in orders">
+				<h5>User: {{order.username}}</h5>
+				<h5>Date: {{order.dateOrdered}}</h5>
+				<div class="orderline" ng-repeat="orderline in order.items">
+					<h5>{{orderline.quantity}} {{orderline.name}}</h5>
+				</div>
+				<h5>Tax: {{order.taxCost / 100 | currency}}</h5>
+				<h5>Total: {{order.totalCost / 100 | currency}}</h5>
+			</div>
+		</section>
+
+		<section ng-show="action == 'addCategory'">
+			<form>
+				<label>New Category Name:<input type="text" ng-model="newCategory.name"></label>
+				<button ng-click="addCategory()">Add Category</button>
+			</form>
+		</section>
+
+		<section ng-show="action == 'addProduct'">
+			<label>Category:
+			<select ng-model="newProduct.categoryID">
+				<option ng-repeat="category in categories" value="{{category.categoryID}}">{{category.categoryName}}</option>
+			</select>
+			</label>
+			<form ng-show="newProduct.categoryID != undefined">
+				<label>Product Name:<input type="text" ng-model="newProduct.name"></label><br>
+				<label>Product Description:<input type="text" ng-model="newProduct.description"></label><br>
+				<label>Product Image URL:<input type="text" ng-model="newProduct.imageURL"></label><br>
+				<label>Product Price(in cents):<input type="text" ng-model="newProduct.price"></label><br>
+				<label>Product Quantity Available:<input type="text" ng-model="newProduct.quantityAvailable"></label>
+				<br>
+				<button ng-click="addProduct()">add product</button>
+			</form>
+		</section>
+
+	</body>
+</html>

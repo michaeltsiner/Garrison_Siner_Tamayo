@@ -11,13 +11,11 @@ nav {
   display: grid;
   grid-template-columns: 1fr auto auto;
   justify-items: start;
-  border-bottom: 2px solid #CFCFCF;
 }
 
-/* .categories {
-  background-color: #F5F5F5;
+.categories {
   height: 100vh;
-} */
+}
 
 .categories h1 {
   text-align: center;

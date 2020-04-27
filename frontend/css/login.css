@@ -1,13 +1,15 @@
 .form {
+	color: #ccc;
 	width: 40%;
 	padding: 1em;
 	margin: auto;
-	background-color: rgb(88, 211, 241);
+	background-color: navy;
 	border-radius: 1em;
 }
 
 body {
-	background-color: rgb(123, 137, 182);
+	text-decoration: #ccc;
+	background-color: rgb(60, 50, 230);
 }
 
 input {

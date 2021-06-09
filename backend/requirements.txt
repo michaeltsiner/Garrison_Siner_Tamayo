@@ -11,7 +11,7 @@ Jinja2==2.11.1
 jsonschema==3.2.0
 MarkupSafe==1.1.1
 mccabe==0.6.1
-pip==10.0.1
+pip==19.2
 pybuilder==0.11.17
 pycodestyle==2.5.0
 pyflakes==2.1.1
